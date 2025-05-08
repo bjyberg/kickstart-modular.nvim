@@ -2,7 +2,7 @@ return {
 
   { -- highlight occurences of current word
     'RRethy/vim-illuminate',
-    enabled = false,
+    enabled = true,
   },
   { -- filetree
     'nvim-tree/nvim-tree.lua',
@@ -69,7 +69,7 @@ return {
 
   { -- highlight markdown headings and code blocks etc.
     'lukas-reineke/headlines.nvim',
-    enabled = false,
+    enabled = true,
     dependencies = 'nvim-treesitter/nvim-treesitter',
     config = function()
       require('headlines').setup {
@@ -103,13 +103,7 @@ return {
       }
     end,
   },
-  -- {
-  --   "uga-rosa/ccc.nvim",
-  --   lazy = false,
-  --   config = function ()
-  --     require("ccc").setup()
-  --   end
-  -- },
+
   {
     'mikavilpas/yazi.nvim',
     event = 'VeryLazy',
@@ -127,8 +121,6 @@ return {
         desc = "Open the file manager in nvim's working directory",
       },
       {
-        -- NOTE: this requires a version of yazi that includes
-        -- https://github.com/sxyazi/yazi/pull/1305 from 2024-07-18
         '<c-up>',
         '<cmd>Yazi toggle<cr>',
         desc = 'Resume the last yazi session',
@@ -143,34 +135,4 @@ return {
       },
     },
   },
-  -- {
-  --   "tris203/precognition.nvim",
-  --   --event = "VeryLazy",
-  --   opts = {
-  --   -- startVisible = true,
-  --   -- showBlankVirtLine = true,
-  --   -- highlightColor = { link = "Comment" },
-  --   -- hints = {
-  --   --      Caret = { text = "^", prio = 2 },
-  --   --      Dollar = { text = "$", prio = 1 },
-  --   --      MatchingPair = { text = "%", prio = 5 },
-  --   --      Zero = { text = "0", prio = 1 },
-  --   --      w = { text = "w", prio = 10 },
-  --   --      b = { text = "b", prio = 9 },
-  --   --      e = { text = "e", prio = 8 },
-  --   --      W = { text = "W", prio = 7 },
-  --   --      B = { text = "B", prio = 6 },
-  --   --      E = { text = "E", prio = 5 },
-  --   -- },
-  --   -- gutterHints = {
-  --   --     G = { text = "G", prio = 10 },
-  --   --     gg = { text = "gg", prio = 9 },
-  --   --     PrevParagraph = { text = "{", prio = 8 },
-  --   --     NextParagraph = { text = "}", prio = 8 },
-  --   -- },
-  --   -- disabled_fts = {
-  --   --     "startify",
-  --   -- },
-  --   },
-  -- }
 }

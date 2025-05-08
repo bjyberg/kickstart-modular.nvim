@@ -71,4 +71,14 @@ vim.o.scrolloff = 10
 -- See `:help 'confirm'`
 vim.o.confirm = true
 
+-- Set custom filetype for Observable JS
+vim.filetype.add {
+  extension = {
+    ojs = 'javascript',
+  },
+}
+
+-- and make quarto detect as md
+vim.treesitter.language.register('markdown', { 'quarto', 'rmd' })
+
 -- vim: ts=2 sts=2 sw=2 et

@@ -208,6 +208,14 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
+        r_language_server = {
+          -- cmd = { "R", "--slave", "-e", "languageserver::run()" },
+          filetypes = { 'r', 'rmd' },
+          -- root_dir = require("lspconfig.util").root_pattern(".git", ".Rproj", ".Rprofile"),
+        },
+        marksman = {
+          filetypes = { 'markdown', 'quarto' },
+        },
         -- clangd = {},
         -- gopls = {},
         -- pyright = {},
@@ -218,7 +226,9 @@ return {
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
+        ts_ls = {
+          filetypes = { 'js', 'typescript', 'ojs' },
+        },
         --
 
         lua_ls = {
@@ -231,7 +241,7 @@ return {
                 callSnippet = 'Replace',
               },
               -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+              diagnostics = { disable = { 'missing-fields' } },
             },
           },
         },
