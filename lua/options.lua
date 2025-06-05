@@ -56,6 +56,8 @@ vim.o.splitbelow = true
 --   and `:help lua-options-guide`
 vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣', lead = '·' }
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
@@ -81,4 +83,9 @@ vim.filetype.add {
 -- and make quarto detect as md
 vim.treesitter.language.register('markdown', { 'quarto', 'rmd' })
 
+-- Settings for tab and indent. Default to 2
+local tabsize = 2
+vim.opt.tabstop = tabsize
+vim.opt.shiftwidth = tabsize
+vim.opt.expandtab = true
 -- vim: ts=2 sts=2 sw=2 et

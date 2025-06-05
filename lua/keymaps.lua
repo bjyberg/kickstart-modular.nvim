@@ -8,6 +8,10 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
+vim.keymap.set('n', '<leader>td', function()
+  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { desc = '[T]oggle [D]iagnostics' })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -51,4 +55,26 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Delete to black hole register by default
+vim.keymap.set('n', 'd', '"_d', { noremap = true, desc = 'Delete (black hole)' })
+vim.keymap.set('v', 'd', '"_d', { noremap = true, desc = 'Delete (black hole)' })
+
+-- Map 'x' to 'cut' (delete into default register)
+vim.keymap.set('n', 'x', 'd', { noremap = true, desc = 'Cut (x to d)' })
+vim.keymap.set('v', 'x', 'd', { noremap = true, desc = 'Cut (x to d)' })
+
+-- Remap 'm' to original 'x' (delete single character)
+vim.keymap.set('n', 'm', 'x', { noremap = true, desc = 'Delete char (m to x)' })
+vim.keymap.set('v', 'm', 'x', { noremap = true, desc = 'Delete char (m to x)' })
+
+-- Paste and overwrite by default
+vim.keymap.set('v', 'p', '_dP', { noremap = true, desc = 'Paste (overwrite)' })
+
+-- -- Swap two charachters for typos
+-- vim.keymap.set('n', 'gs', '"_xp', { noremap = true, desc = 'Swap two characters' })
+
+-- Ctrl-S to save
+vim.keymap.set({ 'n', 'i', 'v', 'x', 's' }, '<C-s>', function()
+  vim.cmd 'write'
+end, { desc = 'Save file', silent = true })
 -- vim: ts=2 sts=2 sw=2 et
