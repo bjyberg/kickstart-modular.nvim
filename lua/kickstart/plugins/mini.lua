@@ -34,6 +34,12 @@ return {
 
       -- ... and there is more!
       --  Check out: https://github.com/echasnovski/mini.nvim
+      -- require('mini.map').setup()
+      require('mini.indentscope').setup {
+        symbol = '▎', -- ▎-- │
+      }
+      require('mini.operators').setup()
+      require('mini.move').setup()
     end,
   },
 }

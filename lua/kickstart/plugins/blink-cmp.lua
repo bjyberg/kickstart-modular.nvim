@@ -1,4 +1,13 @@
 return {
+  -- {
+  --   'saghen/blink.compat',
+  --   -- use the latest release, via version = '*', if you also use the latest release for blink.cmp
+  --   version = '*',
+  --   -- lazy.nvim will automatically load the plugin when it's required by blink.cmp
+  --   lazy = true,
+  --   -- make sure to set opts so that lazy.nvim calls blink.compat's setup
+  --   opts = {},
+  -- },
   { -- Autocompletion
     'saghen/blink.cmp',
     event = 'VimEnter',
@@ -79,6 +88,7 @@ return {
         default = { 'lsp', 'path', 'snippets', 'lazydev' },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
+          -- cmp_r = { name = 'cmp_r', module = 'blink.compat.source' },
         },
       },
 

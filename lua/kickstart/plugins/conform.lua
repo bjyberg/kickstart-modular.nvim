@@ -31,6 +31,11 @@ return {
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        ojs = { 'biome' },
+        r = { 'air', 'styler' },
+        javascript = { 'biome' },
+        quarto = { 'injected' },
+        markdown = { 'injected' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --

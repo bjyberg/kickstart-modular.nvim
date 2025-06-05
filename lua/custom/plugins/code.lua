@@ -23,4 +23,36 @@ return {
     --   lazy_load = true,
     -- },
   },
+  {
+    'danymat/neogen',
+    config = true,
+  },
+  -- {
+  --     'R-nvim/R.nvim',
+  --     -- dependencies = {
+  --     --   -- 'hrsh7th/nvim-cmp',
+  --     --   'R-nvim/cmp-r',
+  --     -- }, -- Only required if you also set defaults.lazy = true
+  --     lazy = false,
+  --     config = function()
+  --       vim.g.R_assign = 0 -- disable `_ <- _` mapping
+  --       vim.g.R_space_maps = 0 -- disable default <Space> mappings
+  --       vim.g.R_external_term = 'tmux split-window -vf'
+  --
+  --       -- Helper function to map keys
+  --       local function map(mode, lhs, rhs, desc)
+  --         vim.keymap.set(mode, lhs, rhs, { silent = true, desc = desc })
+  --       end
+  --
+  --       -- Normal mode mappings
+  --       map('n', '<leader>rs', '<Plug>RStart', 'Start R')
+  --       map('n', '<leader>rr', '<Plug>RSendLine', 'Send current line')
+  --       map('n', '<leader>rb', '<Plug>RSendBlock', 'Send block')
+  --       map('n', '<leader>rf', '<Plug>RSendFile', 'Send file')
+  --       map('n', '<leader>rq', '<Plug>RQuit', 'Quit R')
+  --
+  --       -- Visual mode mapping for selection
+  --       map('v', '<leader>rv', '<Plug>RSendSelection', 'Send visual selection')
+  --     end,
+  --   },
 }
