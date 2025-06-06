@@ -5,11 +5,11 @@ return {
     ft = { 'quarto' },
     dev = false,
     opts = {
-      lspFeatures = {
-        enabled = true,
-        chunks = 'curly',
-        languages = { 'r', 'python', 'julia', 'bash', 'html', 'markdown', 'lua', 'javascript', 'typescript', 'ojs' },
-      },
+      -- lspFeatures = {
+      -- enabled = true,
+      -- chunks = 'curly',
+      -- languages = { 'r', 'python', 'julia', 'bash', 'html', 'markdown', 'lua', 'javascript', 'typescript', 'ojs' },
+      -- },
       codeRunner = {
         enabled = true,
         default_method = 'slime',
