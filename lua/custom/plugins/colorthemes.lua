@@ -21,9 +21,12 @@ return {
         italics = true,
         disable_italic_comments = false,
         transparent_background_level = 2,
+        -- on_highlights = function(hl, palette)
+        --   hl.ColorColumn = { bg = palette.grey1 }
+        -- end,
       }
       require('everforest').load()
-      vim.cmd [[colorscheme everforest]]
+      -- vim.cmd [[colorscheme everforest]]
     end,
   },
   {

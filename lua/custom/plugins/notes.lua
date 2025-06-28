@@ -45,6 +45,9 @@ return {
       heading = {
         backgrounds = {},
       },
+      -- code = {
+      --   disable_background = true,
+      -- },
       completions = {
         blink = { enabled = true },
       },

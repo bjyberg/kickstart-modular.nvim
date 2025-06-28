@@ -19,7 +19,15 @@ return {
     'm4xshen/hardtime.nvim',
     lazy = false,
     dependencies = { 'MunifTanjim/nui.nvim' },
-    opts = {},
+    opts = {
+      disabled_keys = {
+        ['<Up>'] = false,
+        ['<Down>'] = false,
+        ['<Left>'] = false,
+        ['<Right>'] = false,
+      },
+      disable_mouse = false,
+    },
   },
   -- 'tris203/precognition.nvim',
   -- lazy = false,
@@ -50,4 +58,44 @@ return {
   --     'startify',
   --   },
   -- },
+  {
+    'monaqa/dial.nvim',
+    -- https://www.lazyvim.org/extras/editor/dial
+    config = function()
+      local augend = require 'dial.augend'
+      require('dial.config').augends:register_group {
+        default = {
+          augend.constant.alias.bool,
+          augend.constant.new {
+            elements = { '&&', '||' },
+            word = false,
+            cyclic = true,
+          },
+          augend.constant.new {
+            elements = { '==', '!=' },
+            word = false,
+            cyclic = true,
+          },
+          augend.constant.new {
+            elements = { 'TRUE', 'FALSE' },
+            preserve_case = true,
+          },
+          augend.constant.new {
+            elements = { '[ ]', '[x]', '[-]', '[o]' },
+            word = false,
+            cyclic = true,
+          },
+          augend.case.new {
+            types = { 'camelCase', 'PascalCase', 'snake_case', 'SCREAMING_SNAKE_CASE' },
+            cyclic = true,
+          },
+
+          augend.integer.alias.decimal_int,
+          augend.date.alias['%d.%m.%Y'],
+        },
+      }
+      vim.keymap.set('n', '<C-a>', require('dial.map').inc_normal(), { noremap = true })
+      vim.keymap.set('n', '<C-x>', require('dial.map').dec_normal(), { noremap = true })
+    end,
+  },
 }

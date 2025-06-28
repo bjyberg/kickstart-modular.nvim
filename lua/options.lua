@@ -85,8 +85,11 @@ vim.treesitter.language.register('markdown', { 'quarto', 'rmd' })
 
 -- Settings for tab and indent. Default to 2
 local tabsize = 2
-vim.opt.tabstop = tabsize
-vim.opt.shiftwidth = tabsize
-vim.opt.expandtab = true
+vim.o.tabstop = tabsize
+vim.o.shiftwidth = tabsize
+vim.o.expandtab = true
+
+-- add cc line
+vim.o.colorcolumn = '120'
 
 -- vim: ts=2 sts=2 sw=2 et

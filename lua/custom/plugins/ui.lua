@@ -4,6 +4,7 @@ return {
     'RRethy/vim-illuminate',
     enabled = true,
   },
+  -- { 'lukas-reineke/virt-column.nvim', opts = {} },
   { -- filetree
     'nvim-tree/nvim-tree.lua',
     lazy = false,
@@ -52,47 +53,18 @@ return {
     },
   },
 
-  { -- or show symbols in the current file as breadcrumbs
-    'Bekaboo/dropbar.nvim',
-    enabled = function()
-      return vim.fn.has 'nvim-0.10' == 1
-    end,
-    dependencies = {
-      'nvim-telescope/telescope-fzf-native.nvim',
-    },
-    config = function()
-      -- turn off global option for windowline
-      vim.opt.winbar = nil
-      vim.keymap.set('n', '<leader>ls', require('dropbar.api').pick, { desc = '[s]ymbols' })
-    end,
-  },
-
-  -- { -- highlight markdown headings and code blocks etc.
-  --   'lukas-reineke/headlines.nvim',
-  --   enabled = true,
-  --   dependencies = 'nvim-treesitter/nvim-treesitter',
+  -- { -- or show symbols in the current file as breadcrumbs
+  --   'Bekaboo/dropbar.nvim',
+  --   enabled = function()
+  --     return vim.fn.has 'nvim-0.10' == 1
+  --   end,
+  --   dependencies = {
+  --     'nvim-telescope/telescope-fzf-native.nvim',
+  --   },
   --   config = function()
-  --     require('headlines').setup {
-  --       quarto = {
-  --         query = vim.treesitter.query.parse(
-  --           'markdown',
-  --           [[
-  --               (fenced_code_block) @codeblock
-  --               ]]
-  --         ),
-  --         codeblock_highlight = 'CodeBlock',
-  --         treesitter_language = 'markdown',
-  --       },
-  --       markdown = {
-  --         query = vim.treesitter.query.parse(
-  --           'markdown',
-  --           [[
-  --               (fenced_code_block) @codeblock
-  --               ]]
-  --         ),
-  --         codeblock_highlight = 'CodeBlock',
-  --       },
-  --     }
+  --     -- turn off global option for windowline
+  --     vim.opt.winbar = nil
+  --     vim.keymap.set('n', '<leader>ls', require('dropbar.api').pick, { desc = '[s]ymbols' })
   --   end,
   -- },
   {
