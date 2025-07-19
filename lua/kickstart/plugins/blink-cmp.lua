@@ -67,6 +67,11 @@ return {
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
         preset = 'default',
+        ['<C-b>'] = {
+          function(cmp)
+            cmp.show { providers = { 'path' } }
+          end,
+        },
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -88,7 +93,6 @@ return {
         default = { 'lsp', 'path', 'snippets', 'lazydev' },
         providers = {
           lazydev = { module = 'lazydev.integrations.blink', score_offset = 100 },
-          -- cmp_r = { name = 'cmp_r', module = 'blink.compat.source' },
         },
       },
 

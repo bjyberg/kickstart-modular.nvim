@@ -28,6 +28,15 @@ return {
     config = true,
   },
   -- {
+  --   'ray-x/lsp_signature.nvim',
+  --   event = 'InsertEnter',
+  --   opts = {
+  --     floating_window = false,
+  --     hint_prefix = '',
+  --     bind = true,
+  --   },
+  -- },
+  -- {
   --     'R-nvim/R.nvim',
   --     -- dependencies = {
   --     --   -- 'hrsh7th/nvim-cmp',
