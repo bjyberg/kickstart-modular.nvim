@@ -24,7 +24,7 @@ return {
           return nil
         else
           return {
-            timeout_ms = 1500,
+            timeout_ms = 2500,
             lsp_format = 'fallback',
           }
         end
@@ -37,6 +37,8 @@ return {
         quarto = { 'injected' },
         markdown = { 'injected' },
         python = { 'ruff_format' },
+        typescript = { 'biome' },
+        toml = { 'tombi' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --

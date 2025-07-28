@@ -55,8 +55,6 @@ vim.o.splitbelow = true
 --   See `:help lua-options`
 --   and `:help lua-options-guide`
 vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
-vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣', lead = '·' }
 
 -- Preview substitutions live, as you type!
@@ -90,6 +88,9 @@ vim.o.shiftwidth = tabsize
 vim.o.expandtab = true
 
 -- add cc line
-vim.o.colorcolumn = '120'
+-- vim.o.colorcolumn = '120'
+--
+-- Custom command to diff the swap file with its "parent"
+vim.api.nvim_create_user_command('SwapDiff', 'diffthis | vnew | r # | exe "norm! ggdd" | diffthis', {})
 
 -- vim: ts=2 sts=2 sw=2 et

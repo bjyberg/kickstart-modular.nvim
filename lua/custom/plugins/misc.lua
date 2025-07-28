@@ -98,4 +98,9 @@ return {
       vim.keymap.set('n', '<C-x>', require('dial.map').dec_normal(), { noremap = true })
     end,
   },
+  {
+    'chentoast/marks.nvim',
+    event = 'VeryLazy',
+    opts = {},
+  },
 }

@@ -74,6 +74,8 @@ return {
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
+      vim.keymap.set('n', '<leader>tt', ':Telescope<CR>', { desc = '[t]elescope' })
+      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
       vim.keymap.set('n', '<leader>th', builtin.help_tags, { desc = '[t]elescope [h]elp' })
       vim.keymap.set('n', '<leader>tk', builtin.keymaps, { desc = '[t]elescope [k]eymaps' })
       vim.keymap.set('n', '<leader>tf', builtin.find_files, { desc = '[t]elescope [f]iles' })
@@ -85,9 +87,8 @@ return {
       vim.keymap.set('n', '<leader>t.', builtin.oldfiles, { desc = '[t]elescope recent files ("." for repeat)' })
       vim.keymap.set('n', '<leader>tb', builtin.buffers, { desc = '[t]elescope [b]uffers' })
       vim.keymap.set('n', '<leader>tc', builtin.colorscheme, { desc = '[t]elescope [c]olorscheme' })
-      vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
-      vim.keymap.set('n', '<leader>fz', builtin.current_buffer_fuzzy_find, { desc = '[telescope] fu[z]zy find in current buffer' })
-      vim.keymap.set('n', '<leader>tt', ':Telescope<CR>', { desc = '[t]elescope' })
+      vim.keymap.set('n', '<leader>tz', builtin.current_buffer_fuzzy_find, { desc = '[telescope] fu[z]zy find in current buffer' })
+      vim.keymap.set('n', '<leader>tm', builtin.marks, { desc = '[t]elescope [m]arks' })
       -- git
       vim.keymap.set('n', '<leader>gtb', builtin.git_branches, { desc = '[g]it [t]elescope [b]ranches' })
       vim.keymap.set('n', '<leader>gtc', builtin.git_commits, { desc = '[g]it [t]elescope [c]ommits' })

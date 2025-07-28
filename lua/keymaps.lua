@@ -66,12 +66,12 @@ vim.keymap.set('n', 'd', '"_d', { noremap = true, desc = 'Delete (black hole)' }
 vim.keymap.set('v', 'd', '"_d', { noremap = true, desc = 'Delete (black hole)' })
 
 -- Map 'x' to 'cut' (delete into default register)
-vim.keymap.set('n', 'x', 'd', { noremap = true, desc = 'Cut (x to d)' })
-vim.keymap.set('v', 'x', 'd', { noremap = true, desc = 'Cut (x to d)' })
+vim.keymap.set('n', 'x', 'd', { noremap = true, desc = 'Cut' })
+vim.keymap.set('v', 'x', 'd', { noremap = true, desc = 'Cut' })
 
 -- Remap 'm' to original 'x' (delete single character)
-vim.keymap.set('n', 'm', 'x', { noremap = true, desc = 'Delete char (m to x)' })
-vim.keymap.set('v', 'm', 'x', { noremap = true, desc = 'Delete char (m to x)' })
+vim.keymap.set('n', 'xx', '"_x', { noremap = true, desc = 'Delete char (no register)' })
+vim.keymap.set('v', 'xx', '"_x', { noremap = true, desc = 'Delete char (no register)' })
 
 -- Paste and overwrite by default
 vim.keymap.set('v', 'p', '_dP', { noremap = true, desc = 'Paste (overwrite)' })
@@ -121,5 +121,19 @@ vim.keymap.set('n', '<leader>vm', '<cmd>Mason<CR>', { desc = 'neo[v]im: Open [m]
 vim.keymap.set('n', '<leader>vl', '<cmd>Lazy<CR>', { desc = 'neo[v]im: Open [l]azy' })
 vim.keymap.set('n', '<leader>vh', '<cmd>checkhealth<CR>', { desc = 'neo[v]im: Check [h]ealth' })
 vim.keymap.set('n', '<leader>vp', '<cmd>Lazy profile<CR>', { desc = 'neo[v]im: [p]rofile startup time' })
+
+-- [[ Custom - code ]]
+vim.keymap.set('n', '<leader>cc', 'gcc', { remap = true, desc = '[c]ode [c]omment line' })
+vim.keymap.set('v', '<leader>cc', 'gc', { remap = true, desc = '[c]ode [c]omment block' })
+vim.keymap.set('n', '<leader>cs', function()
+  local cs = vim.bo.commentstring:gsub('%%s', '')
+  local text = cs .. '---   ---'
+  vim.api.nvim_put({ text }, 'l', true, true)
+  local row = vim.api.nvim_win_get_cursor(0)[1] - 1
+  local col = #cs + 5 -- #cs (comment string) + 3 (dashes) + 1 (space)
+  vim.api.nvim_win_set_cursor(0, { row, col - 1 })
+end, { desc = '[c]ode [s]ection' })
+
+-- vim.keymap.set('n', '<leader>ctd')
 
 -- vim: ts=2 sts=2 sw=2 et

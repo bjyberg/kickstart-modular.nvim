@@ -65,6 +65,7 @@ return {
         { '<leader>l', group = '[l]sp' },
         { '<leader>lg', group = '[l]sp [g]o' },
         { '<leader>g', group = '[g]it' },
+        { '<leader>gt', group = '[g]it [t]oggle' },
         { '<leader>v', group = '[v]im' },
         { '<leader>s', group = '[s]pell' },
       },

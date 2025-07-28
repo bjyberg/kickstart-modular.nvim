@@ -46,6 +46,15 @@ return {
       -- OR 'folke/snacks.nvim',
       'nvim-tree/nvim-web-devicons',
     },
+    keys = {
+      { '<leader>goo', '<cmd>Octo actions<CR>', desc = '[g]it [o]cto [o]pen' },
+      { '<leader>goi', '<cmd>Octo issue list<CR>', desc = '[g]it [o]cto [i]ssues' },
+      { '<leader>gor', '<cmd>Octo repo list<CR>', desc = '[g]it [o]cto [r]epos' },
+      { '<leader>gop', '<cmd>Octo pr list<CR>', desc = '[g]it [o]cto [p]ull requests' },
+      { '<leader>goc', '<cmd>Octo discussion list<CR>', desc = '[g]it [o]cto [d]iscussions' },
+      { '<leader>goI', '<cmd>Octo issue create<CR>', desc = '[g]it [o]cto open [I]ssue' },
+      { '<leader>goP', '<cmd>Octo pr create<CR>', desc = '[g]it [o]cto open [P]ull request' },
+    },
     config = function()
       require('octo').setup()
     end,
