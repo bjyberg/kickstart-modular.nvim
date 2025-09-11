@@ -93,4 +93,27 @@ vim.o.expandtab = true
 -- Custom command to diff the swap file with its "parent"
 vim.api.nvim_create_user_command('SwapDiff', 'diffthis | vnew | r # | exe "norm! ggdd" | diffthis', {})
 
+---- Folds --
+-- Folds based on comment string
+vim.opt.foldmethod = 'marker'
+vim.api.nvim_create_autocmd('FileType', {
+  callback = function()
+    local cs = vim.bo.commentstring:match '^(.*)%%s'
+    if cs then
+      cs = vim.trim(cs)
+      vim.opt_local.foldmarker = cs .. '--,' .. cs .. '++'
+    end
+  end,
+})
+vim.o.foldcolumn = '1'
+vim.opt.fillchars = { foldopen = '', foldsep = '│', foldclose = '' }
+vim.o.foldlevelstart = 99 -- all folds open default
+--++
+
+-- Style of hover boxes
+vim.o.winborder = 'rounded'
+
+-- Line Breaks
+vim.o.linebreak = true
+
 -- vim: ts=2 sts=2 sw=2 et

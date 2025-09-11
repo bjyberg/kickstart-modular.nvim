@@ -213,8 +213,37 @@ return {
         },
         marksman = {
           filetypes = { 'markdown', 'quarto' },
+          settings = {
+            marksman = {
+              file_extensions = { '.md', '.markdown', '.qmd' },
+            },
+          },
         },
-        pyright = {},
+        basedpyright = {
+          -- settings = {
+          --   basedpyright = {
+          --     disableOrganizeImports = true,
+          --   },
+          --   python = {
+          --     analysis = {
+          --       ignore = { '*' },
+          --     },
+          --   },
+          -- },
+        },
+        tinymist = {
+          settings = {
+            formatterMode = 'typstyle',
+            formatterProseWrap = true,
+            formatterPrintWidth = 100,
+            lint = {
+              enabled = true,
+            },
+            exportPdf = 'onType',
+            semanticTokens = 'disable',
+          },
+        },
+        -- ruff = {},
         rust_analyzer = {},
         air = {},
         yamlls = {},

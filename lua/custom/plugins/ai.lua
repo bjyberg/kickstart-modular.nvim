@@ -18,7 +18,7 @@ return {
   'monkoose/neocodeium',
   event = 'VeryLazy',
   keys = {
-    { '<leader>cai', '<cmd>NeoCodeium toggle_buffer<cr>', desc = '[c]ode [a]i' },
+    { '<leader>va', '<cmd>NeoCodeium toggle_buffer<cr>', desc = '[v]im [a]i' },
   },
   config = function()
     local neocodeium = require 'neocodeium'

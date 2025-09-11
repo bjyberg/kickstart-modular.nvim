@@ -103,4 +103,100 @@ return {
     event = 'VeryLazy',
     opts = {},
   },
+  {
+    'folke/trouble.nvim',
+    opts = {},
+    cmd = 'Trouble',
+    keys = {
+      {
+        '<leader>xd',
+        '<cmd>Trouble diagnostics toggle<cr>',
+        desc = '[d]iagnostics',
+      },
+      {
+        '<leader>xD',
+        '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
+        desc = 'Buffer [D]iagnostics',
+      },
+      {
+        '<leader>xs',
+        '<cmd>Trouble symbols toggle focus=false<cr>',
+        desc = '[s]ymbols',
+      },
+      {
+        '<leader>xl',
+        '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
+        desc = '[l]sp definitions/references',
+      },
+      -- {
+      --   '<leader>xL',
+      --   '<cmd>Trouble loclist toggle<cr>',
+      --   desc = 'Location List (Trouble)',
+      -- },
+      -- {
+      --   '<leader>xq',
+      --   '<cmd>Trouble qflist toggle<cr>',
+      --   desc = '[q]uickfix List (Trouble)',
+      -- },
+      {
+        '<leader>xt',
+        '<cmd>Trouble todo toggle<cr>',
+        desc = '[t]odo List (Trouble)',
+      },
+    },
+  },
+  {
+    'folke/flash.nvim',
+    event = 'VeryLazy',
+    ---@type Flash.Config
+    opts = {
+      modes = {
+        search = {
+          enabled = true,
+        },
+      },
+    },
+    keys = {
+      {
+        's',
+        mode = { 'n', 'x', 'o' },
+        function()
+          require('flash').jump()
+        end,
+        desc = 'Flash',
+      },
+      {
+        'S',
+        mode = { 'n', 'x', 'o' },
+        function()
+          require('flash').treesitter()
+        end,
+        desc = 'Flash Treesitter',
+      },
+      {
+        'r',
+        mode = 'o',
+        function()
+          require('flash').remote()
+        end,
+        desc = 'Remote Flash',
+      },
+      {
+        'R',
+        mode = { 'o', 'x' },
+        function()
+          require('flash').treesitter_search()
+        end,
+        desc = 'Treesitter Search',
+      },
+      {
+        '<c-s>',
+        mode = { 'c' },
+        function()
+          require('flash').toggle()
+        end,
+        desc = 'Toggle Flash Search',
+      },
+    },
+  },
 }

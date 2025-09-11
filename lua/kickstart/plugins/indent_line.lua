@@ -7,9 +7,11 @@ return {
     ---@module "ibl"
     ---@type ibl.config
     opts = {
-      -- scope = {
-      --   include = { node_type = { ['*'] = { '*' } } },
-      -- },
+      scope = {
+        enabled = true,
+        -- Show the scope of the current cursor position
+        include = { node_type = { ['*'] = { 'arguments' } } },
+      },
     },
   },
 }

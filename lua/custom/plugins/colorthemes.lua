@@ -1,18 +1,42 @@
 return {
   -- NOTE: Not really a theme, but changes the colour with darkman
-  { 'vimpostor/vim-lumen', lazy = false },
-  --NOTE: THEMES
-  -- {
-  --   'ferdinandrau/lavish.nvim',
-  --   config = function()
-  --       require('lavish').apply()
-  --   end
-  -- },
+  { 'vimpostor/vim-lumen', lazy = false }, -- Obselete now
+  {
+    'folke/twilight.nvim',
+    opts = {
+      dimming = {
+        color = { 'Normal', '#ffffff' },
+        -- term_bg = '#7f7f7f',
+        term_bg = '#b3b3b3',
+        alpha = 0.6,
+      },
+      context = 10,
+    },
+    config = function(_, opts)
+      require('twilight').setup(opts)
+      --HACK: Set the color dynamic with light/darkmode based on a hl group
+
+      -- 2️⃣ Function to pick your preferred highlight
+      local function update_twilight_color()
+        local ln = vim.api.nvim_get_hl(0, { name = 'LineNr' }).fg
+        if ln then
+          vim.api.nvim_set_hl(0, 'Twilight', { fg = string.format('#%06x', ln) })
+        end
+      end
+
+      vim.api.nvim_create_autocmd('OptionSet', {
+        pattern = 'background',
+        callback = function()
+          update_twilight_color()
+        end,
+      })
+    end,
+  },
   {
     'neanias/everforest-nvim',
     version = false,
     lazy = false,
-    priority = 1000, -- make sure to load this before all the other start plugins
+    -- priority = 1000, -- make sure to load this before all the other start plugins
     -- Optional; default configuration will be used if setup isn't called.
     config = function()
       require('everforest').setup {
@@ -21,12 +45,8 @@ return {
         italics = true,
         disable_italic_comments = false,
         transparent_background_level = 2,
-        -- on_highlights = function(hl, palette)
-        --   hl.ColorColumn = { bg = palette.grey1 }
-        -- end,
       }
       require('everforest').load()
-      -- vim.cmd [[colorscheme everforest]]
     end,
   },
   {

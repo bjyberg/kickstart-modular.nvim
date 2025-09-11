@@ -81,6 +81,10 @@ vim.keymap.set({ 'n', 'i', 'v', 'x', 's' }, '<C-s>', function()
   vim.cmd 'write'
 end, { desc = 'Save file', silent = true })
 
+-- Toggle case with 'U'
+vim.keymap.set('v', 'U', 'g~', { noremap = true, desc = 'Toggle case of selection' })
+vim.keymap.set('n', 'U', '~', { noremap = true, desc = 'Toggle case of selection' })
+
 -- [[ Custom - LSP / Diagnostics ]]
 
 vim.keymap.set('n', '<leader>ld', function()
@@ -97,7 +101,7 @@ vim.keymap.set('n', '<leader>lr', vim.lsp.buf.rename, { desc = '[l]sp [r]ename s
 vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, { desc = '[l]sp code [a]ction' })
 
 -- [[ Custom - Spell ]]
-vim.keymap.set('n', '<leader>ss', function()
+vim.keymap.set('n', '<leader>st', function()
   vim.opt.spell = not (vim.opt.spell:get())
 end, { desc = '[s]pell check [t]oggle' })
 

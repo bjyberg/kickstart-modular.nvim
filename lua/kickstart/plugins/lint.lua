@@ -6,7 +6,10 @@ return {
     config = function()
       local lint = require 'lint'
       lint.linters_by_ft = {
-        markdown = { 'markdownlint' },
+        markdown = { 'markdownlint' }, -- Vale a cool addition for writing
+        -- see https://github.com/mfussenegger/nvim-lint/issues/528
+        -- run ~/.local/share/nvim/mason/packages/vale/vale --config=$HOME/.config/vale/.vale.ini sync
+        quarto = { 'markdownlint' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,

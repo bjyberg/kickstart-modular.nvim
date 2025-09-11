@@ -30,43 +30,43 @@ return {
       }
     end,
   },
-
-  { -- show tree of symbols in the current file
-    'hedyhli/outline.nvim',
-    cmd = 'Outline',
-    keys = {
-      { '<leader>lo', ':Outline<cr>', desc = 'symbols outline' },
-    },
+  {
+    'folke/zen-mode.nvim',
+    --HACK: https://github.com/folke/zen-mode.nvim/issues/184
+    -- This can be simplified when resolved (window border issue)
     opts = {
-      providers = {
-        priority = { 'markdown', 'lsp', 'norg' },
-        -- Configuration for each provider (3rd party providers are supported)
-        lsp = {
-          -- Lsp client names to ignore
-          blacklist_clients = {},
+      window = {
+        backdrop = 1,
+        width = 120,
+        options = {
+          number = true,
+          relativenumber = true,
         },
-        markdown = {
-          -- List of supported ft's to use the markdown provider
-          filetypes = { 'markdown', 'quarto' },
+      },
+      on_close = function()
+        vim.o.winborder = 'rounded'
+      end,
+      plugins = {
+        kitty = {
+          enabled = true,
+          font = '+3',
         },
+        todo = { enabled = true },
+      },
+    },
+    keys = {
+      {
+        '<leader>z',
+        function()
+          vim.o.winborder = 'none'
+          require('zen-mode').toggle()
+        end,
+        desc = '[Z]en mode',
+        noremap = true,
+        silent = true,
       },
     },
   },
-
-  -- { -- or show symbols in the current file as breadcrumbs
-  --   'Bekaboo/dropbar.nvim',
-  --   enabled = function()
-  --     return vim.fn.has 'nvim-0.10' == 1
-  --   end,
-  --   dependencies = {
-  --     'nvim-telescope/telescope-fzf-native.nvim',
-  --   },
-  --   config = function()
-  --     -- turn off global option for windowline
-  --     vim.opt.winbar = nil
-  --     vim.keymap.set('n', '<leader>ls', require('dropbar.api').pick, { desc = '[s]ymbols' })
-  --   end,
-  -- },
   {
     'hat0uma/csvview.nvim',
     config = function()
@@ -74,14 +74,6 @@ return {
         display_mode = 'border',
       }
     end,
-  },
-  {
-    'sphamba/smear-cursor.nvim',
-    opts = {
-      smear_between_buffers = false,
-      legacy_computing_symbols_support = true,
-      transparent_bg_fallback_color = '#303030',
-    },
   },
   {
     'mikavilpas/yazi.nvim',
