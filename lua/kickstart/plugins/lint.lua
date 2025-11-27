@@ -5,11 +5,41 @@ return {
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
       local lint = require 'lint'
+
+      -- Getting this through LSP instead.
+      -- lint.linters.jarl = {
+      --   cmd = 'jarl',
+      --   args = { 'check' },
+      --   stdin = false,
+      --   ignore_exitcode = true,
+      --
+      --   parser = function(output, bufnr)
+      --     local diagnostics = {}
+      --
+      --     for severity, code, file, line, col, snippet, help in
+      --       output:gmatch '(%w+):%s*(%S+)%s*\n%s*%-%->%s*([^:]+):(%d+):(%d+)[^\n]*\n[^\n]*`(.-)`[^\n]*\n%s*=%s*help:%s*(.-)\n'
+      --     do
+      --       table.insert(diagnostics, {
+      --         bufnr = bufnr,
+      --         lnum = tonumber(line) - 1,
+      --         col = tonumber(col) - 1,
+      --         message = snippet .. ' — ' .. help,
+      --         severity = severity == 'error' and vim.diagnostic.severity.ERROR or vim.diagnostic.severity.WARN,
+      --         source = 'jarl',
+      --         code = code,
+      --       })
+      --     end
+      --     return diagnostics
+      --   end,
+      -- }
+
       lint.linters_by_ft = {
         markdown = { 'markdownlint' }, -- Vale a cool addition for writing
         -- see https://github.com/mfussenegger/nvim-lint/issues/528
         -- run ~/.local/share/nvim/mason/packages/vale/vale --config=$HOME/.config/vale/.vale.ini sync
         quarto = { 'markdownlint' },
+
+        -- r = { 'jarl' },
       }
 
       -- To allow other plugins to add linters to require('lint').linters_by_ft,

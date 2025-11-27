@@ -45,9 +45,17 @@ return {
       heading = {
         backgrounds = {},
       },
-      -- code = {
-      --   disable_background = true,
-      -- },
+      code = {
+        disable_background = false,
+        conceal_delimiters = false,
+        language = true,
+        border = 'none',
+      },
+      html = {
+        comment = {
+          conceal = false,
+        },
+      },
       completions = {
         blink = { enabled = true },
       },

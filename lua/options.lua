@@ -95,18 +95,22 @@ vim.api.nvim_create_user_command('SwapDiff', 'diffthis | vnew | r # | exe "norm!
 
 ---- Folds --
 -- Folds based on comment string
-vim.opt.foldmethod = 'marker'
-vim.api.nvim_create_autocmd('FileType', {
-  callback = function()
-    local cs = vim.bo.commentstring:match '^(.*)%%s'
-    if cs then
-      cs = vim.trim(cs)
-      vim.opt_local.foldmarker = cs .. '--,' .. cs .. '++'
-    end
-  end,
-})
-vim.o.foldcolumn = '1'
-vim.opt.fillchars = { foldopen = '', foldsep = '│', foldclose = '' }
+-- vim.opt.foldmethod = 'marker'
+-- vim.api.nvim_create_autocmd('FileType', {
+--   callback = function()
+--     local cs = vim.bo.commentstring:match '^(.*)%%s'
+--     if cs then
+--       cs = vim.trim(cs)
+--       vim.opt_local.foldmarker = cs .. '--,' .. cs .. '++'
+--     end
+--   end,
+-- })
+
+-- Folds based on indentation
+vim.o.foldmethod = 'indent'
+vim.o.foldcolumn = '0' -- replaced with status line
+vim.opt.foldnestmax = 1
+-- vim.opt.fillchars = { foldopen = '', foldsep = '│', foldclose = '' }
 vim.o.foldlevelstart = 99 -- all folds open default
 --++
 

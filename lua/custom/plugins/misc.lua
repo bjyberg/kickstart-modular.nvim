@@ -99,11 +99,6 @@ return {
     end,
   },
   {
-    'chentoast/marks.nvim',
-    event = 'VeryLazy',
-    opts = {},
-  },
-  {
     'folke/trouble.nvim',
     opts = {},
     cmd = 'Trouble',

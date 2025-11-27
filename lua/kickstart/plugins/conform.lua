@@ -17,6 +17,21 @@ return {
         mode = '',
         desc = '[F]ormat buffer',
       },
+      {
+        '<leader>cf',
+        -- R styler is slow but Air doesn't support ' to " and = to <- yet
+        -- Keep as a manual formatter for now
+        function()
+          local ft = vim.bo.filetype
+          if ft == 'r' then
+            require('conform').format { formatters = { 'air', 'styler' }, async = true }
+          else
+            require('conform').format { async = true, lsp_format = 'fallback' }
+          end
+        end,
+        mode = '',
+        desc = '[C]ode [F]ormat',
+      },
     },
     opts = {
       log_level = vim.log.levels.DEBUG,
@@ -38,13 +53,17 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         ojs = { 'biome' },
-        r = { 'air', 'styler' },
+        r = { 'air', 'jarl' },
+        -- r = { 'air', 'styler' },
         javascript = { 'biome' },
         quarto = { 'injected', 'deno_qmd' },
         markdown = { 'injected', 'deno_fmt' },
         python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
         typescript = { 'biome' },
         toml = { 'tombi' },
+        astro = { 'deno_fmt' },
+        sql = { 'sqruff' },
+        -- julia = { 'runic' }, -- see: https://github.com/fredrikekre/Runic.jl?tab=readme-ov-file#editor-integration
         -- typst = { 'tinymist', 'typstyle' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
@@ -57,6 +76,11 @@ return {
           command = 'deno',
           args = { 'fmt', '--ext', 'md', '-' },
           stdin = true,
+        },
+        jarl = {
+          command = 'jarl',
+          args = { 'check', '--fix', '--allow-no-vcs', '$FILENAME' },
+          stdin = false,
         },
       },
     },
