@@ -231,17 +231,17 @@ return {
             },
           },
         },
-        basedpyright = {
-          settings = {
-            basedpyright = {
-              disableOrganizeImports = false,
-              analysis = {
-                typeCheckingMode = 'basic',
-              },
-            },
-          },
-        },
-        -- ty = {},
+        -- basedpyright = {
+        --   settings = {
+        --     basedpyright = {
+        --       disableOrganizeImports = false,
+        --       analysis = {
+        --         typeCheckingMode = 'basic',
+        --       },
+        --     },
+        --   },
+        -- },
+        ty = {},
         tinymist = {
           settings = {
             formatterMode = 'typstyle',
@@ -260,6 +260,7 @@ return {
         yamlls = {},
         jsonls = {},
         tombi = {},
+        astro = {},
         -- julials = {}, -- see: https://discourse.julialang.org/t/neovim-languageserver-jl-crashing-again/130273/2
 
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -269,13 +270,13 @@ return {
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         ts_ls = {
-          filetypes = { 'js', 'javascript', 'typescript', 'ojs' },
+          filetypes = { 'js', 'javascript', 'typescript', 'ojs', 'typescriptreact' },
         },
         biome = {
           filetypes = { 'js', 'javascript', 'typescript', 'ojs' },
         },
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
-        --
+        copilot = {},
 
         lua_ls = {
           -- cmd = { ... },

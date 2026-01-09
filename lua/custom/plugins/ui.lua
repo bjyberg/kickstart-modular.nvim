@@ -22,43 +22,6 @@ return {
     'RRethy/vim-illuminate',
     enabled = true,
   },
-  -- {
-  --   'folke/zen-mode.nvim',
-  --   --HACK: https://github.com/folke/zen-mode.nvim/issues/184
-  --   -- This can be simplified when resolved (window border issue)
-  --   opts = {
-  --     window = {
-  --       backdrop = 1,
-  --       width = 120,
-  --       options = {
-  --         number = true,
-  --         relativenumber = true,
-  --       },
-  --     },
-  --     on_close = function()
-  --       vim.o.winborder = 'rounded'
-  --     end,
-  --     plugins = {
-  --       kitty = {
-  --         enabled = true,
-  --         font = '+3',
-  --       },
-  --       todo = { enabled = true },
-  --     },
-  --   },
-  --   keys = {
-  --     {
-  --       '<leader>Z',
-  --       function()
-  --         vim.o.winborder = 'none'
-  --         require('zen-mode').toggle()
-  --       end,
-  --       desc = '[Z]en mode',
-  --       noremap = true,
-  --       silent = true,
-  --     },
-  --   },
-  -- },
   {
     'hat0uma/csvview.nvim',
     config = function()
@@ -73,7 +36,7 @@ return {
     keys = {
       -- 👇 in this section, choose your own keymappings!
       {
-        '<leader>-',
+        '<leader>yf',
         '<cmd>Yazi<yr>',
         desc = 'Open yazi at the current file',
       },
@@ -84,7 +47,7 @@ return {
         desc = "Open the file manager in nvim's working directory",
       },
       {
-        '<c-up>',
+        '<leader>yt',
         '<cmd>Yazi toggle<cr>',
         desc = 'Resume the last yazi session',
       },

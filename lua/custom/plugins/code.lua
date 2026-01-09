@@ -18,52 +18,11 @@ return {
     'catgoose/nvim-colorizer.lua',
     event = { 'BufReadPost', 'BufNewFile' },
     opts = {},
-    -- event = 'VeryLazy',
-    -- opts = {
-    --   lazy_load = true,
-    -- },
   },
   {
     'danymat/neogen',
     config = true,
   },
-  -- {
-  --   'ray-x/lsp_signature.nvim',
-  --   event = 'InsertEnter',
-  --   opts = {
-  --     floating_window = false,
-  --     hint_prefix = '',
-  --     bind = true,
-  --   },
-  -- },
-  -- {
-  --     'R-nvim/R.nvim',
-  --     -- dependencies = {
-  --     --   -- 'hrsh7th/nvim-cmp',
-  --     --   'R-nvim/cmp-r',
-  --     -- }, -- Only required if you also set defaults.lazy = true
-  --     lazy = false,
-  --     config = function()
-  --       vim.g.R_assign = 0 -- disable `_ <- _` mapping
-  --       vim.g.R_space_maps = 0 -- disable default <Space> mappings
-  --       vim.g.R_external_term = 'tmux split-window -vf'
-  --
-  --       -- Helper function to map keys
-  --       local function map(mode, lhs, rhs, desc)
-  --         vim.keymap.set(mode, lhs, rhs, { silent = true, desc = desc })
-  --       end
-  --
-  --       -- Normal mode mappings
-  --       map('n', '<leader>rs', '<Plug>RStart', 'Start R')
-  --       map('n', '<leader>rr', '<Plug>RSendLine', 'Send current line')
-  --       map('n', '<leader>rb', '<Plug>RSendBlock', 'Send block')
-  --       map('n', '<leader>rf', '<Plug>RSendFile', 'Send file')
-  --       map('n', '<leader>rq', '<Plug>RQuit', 'Quit R')
-  --
-  --       -- Visual mode mapping for selection
-  --       map('v', '<leader>rv', '<Plug>RSendSelection', 'Send visual selection')
-  --     end,
-  --   },
   {
     'R-nvim/R.nvim',
     opts = {
@@ -73,8 +32,6 @@ return {
       external_term = 'tmux split-window -h -l 20',
       hook = {
         on_filetype = function()
-          local opts = { buffer = true }
-
           -- General and Startup
           vim.keymap.set('n', '<LocalLeader>rr', '<Plug>RStart', { buffer = true, desc = 'Start [r]' })
           vim.keymap.set('n', '<LocalLeader>rc', '<Plug>RCustomStart', { buffer = true, desc = '[c]ustom r start' })
@@ -85,9 +42,9 @@ return {
           vim.keymap.set('i', '<M-.>', '<Plug>RInsertPipe', { buffer = true, desc = 'Insert Pipe' })
 
           -- Send
-          vim.keymap.set('n', '<c-Enter>', '<Plug>RDSendLine', opts)
-          vim.keymap.set('x', '<C-Enter>', '<Plug>RSendSelection', opts)
-          vim.keymap.set('i', '<C-Enter>', '<Esc><Plug>RSendLine', opts)
+          vim.keymap.set('n', '<M-Enter>', '<Plug>RDSendLine', { buffer = true })
+          vim.keymap.set('v', '<M-Enter>', '<Plug>RSendSelection', { buffer = true })
+          vim.keymap.set('i', '<M-CR>', '<C-o><Plug>RDSendLine', { buffer = true })
 
           -- Other Useful Commands
           vim.keymap.set('n', '<LocalLeader>rwd', '<Plug>RSetwd', { buffer = true, desc = 'Set [w]orking [d]irectory' })
@@ -113,6 +70,58 @@ return {
     config = function(_, opts)
       vim.g.rout_follow_colorscheme = true
       require('r').setup(opts)
+    end,
+  },
+  {
+    'jake-stewart/multicursor.nvim',
+    branch = '1.0',
+    config = function()
+      local mc = require 'multicursor-nvim'
+      mc.setup()
+
+      local set = vim.keymap.set
+
+      -- Add or skip cursor above/below the main cursor.
+      set({ 'n', 'x' }, '<C-Up>', function()
+        mc.lineAddCursor(-1)
+      end)
+      set({ 'n', 'x' }, '<C-Down>', function()
+        mc.lineAddCursor(1)
+      end)
+      set({ 'n', 'x' }, '<S-Up>', function()
+        mc.lineSkipCursor(-1)
+      end)
+      set({ 'n', 'x' }, '<S-Down>', function()
+        mc.lineSkipCursor(1)
+      end)
+
+      -- Add and remove cursors with control + left click.
+      set('n', '<c-leftmouse>', mc.handleMouse)
+      set('n', '<c-leftdrag>', mc.handleMouseDrag)
+      set('n', '<c-leftrelease>', mc.handleMouseRelease)
+
+      -- Disable and enable cursors.
+      set({ 'n', 'x' }, '<c-q>', mc.toggleCursor)
+
+      -- Mappings defined in a keymap layer only apply when there are
+      -- multiple cursors. This lets you have overlapping mappings.
+      mc.addKeymapLayer(function(layerSet)
+        -- Select a different cursor as the main one.
+        layerSet({ 'n', 'x' }, '<left>', mc.prevCursor)
+        layerSet({ 'n', 'x' }, '<right>', mc.nextCursor)
+
+        -- Delete the main cursor.
+        layerSet({ 'n', 'x' }, '<leader>x', mc.deleteCursor)
+
+        -- Enable and clear cursors using escape.
+        layerSet('n', '<esc>', function()
+          if not mc.cursorsEnabled() then
+            mc.enableCursors()
+          else
+            mc.clearCursors()
+          end
+        end)
+      end)
     end,
   },
 }

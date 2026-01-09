@@ -61,7 +61,7 @@ return {
         python = { 'ruff_fix', 'ruff_format', 'ruff_organize_imports' },
         typescript = { 'biome' },
         toml = { 'tombi' },
-        astro = { 'deno_fmt' },
+        astro = { 'deno_fmt', 'biome' },
         sql = { 'sqruff' },
         -- julia = { 'runic' }, -- see: https://github.com/fredrikekre/Runic.jl?tab=readme-ov-file#editor-integration
         -- typst = { 'tinymist', 'typstyle' },

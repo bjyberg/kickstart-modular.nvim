@@ -81,6 +81,13 @@ vim.keymap.set({ 'n', 'i', 'v', 'x', 's' }, '<C-s>', function()
   vim.cmd 'write'
 end, { desc = 'Save file', silent = true })
 
+-- Alt-/ to comment line
+vim.keymap.set('n', '<C-/>', 'gcc', { remap = true, desc = '[c]ode [c]omment line' })
+vim.keymap.set('v', '<C-/>', 'gc', { remap = true, desc = '[c]ode [c]omment block' })
+
+vim.keymap.set('n', '', 'gcc', { remap = true, desc = '[c]ode [c]omment line' })
+vim.keymap.set('v', '', 'gc', { remap = true, desc = '[c]ode [c]omment block' })
+
 -- Toggle case with 'U'
 vim.keymap.set('v', 'U', 'g~', { noremap = true, desc = 'Toggle case of selection' })
 vim.keymap.set('n', 'U', '~', { noremap = true, desc = 'Toggle case of selection' })
