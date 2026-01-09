@@ -46,6 +46,125 @@ return {
         end,
         desc = '[p]ick',
       },
+      {
+        '<leader>ph',
+        function()
+          Snacks.picker.help()
+        end,
+        desc = '[p]ick [h]elp',
+      },
+      {
+        '<leader>pk',
+        function()
+          Snacks.picker.keymaps()
+        end,
+        desc = '[p]ick [k]eymaps',
+      },
+      {
+        '<leader>pf',
+        function()
+          Snacks.picker.files()
+        end,
+        desc = '[p]ick [f]iles',
+      },
+      {
+        '<leader>ps',
+        function()
+          Snacks.picker.smart()
+        end,
+        desc = '[p]ick [s]mart',
+      },
+      {
+        '<leader>pw',
+        function()
+          Snacks.picker.grep_word()
+        end,
+        desc = '[p]ick current [w]ord',
+      },
+      {
+        '<leader>pg',
+        function()
+          Snacks.picker.grep()
+        end,
+        desc = '[p]ick by [g]rep',
+      },
+      {
+        '<leader>pd',
+        function()
+          Snacks.picker.diagnostics()
+        end,
+        desc = '[p]ick [d]iagnostics',
+      },
+      {
+        '<leader>pr',
+        function()
+          Snacks.picker.resume()
+        end,
+        desc = '[p]ick [r]esume',
+      },
+      {
+        '<leader>p.',
+        function()
+          Snacks.picker.recent()
+        end,
+        desc = '[p]ick recent files ("." for repeat)',
+      },
+      {
+        '<leader>pb',
+        function()
+          Snacks.picker.buffers()
+        end,
+        desc = '[p]ick [b]uffers',
+      },
+      {
+        '<leader>pc',
+        function()
+          Snacks.picker.colorschemes()
+        end,
+        desc = '[p]ick [c]olorscheme',
+      },
+      {
+        '<leader>pz',
+        function()
+          Snacks.picker.lines()
+        end,
+        desc = '[p]ick fu[z]zy find in current buffer',
+      },
+      {
+        '<leader>pm',
+        function()
+          Snacks.picker.marks()
+        end,
+        desc = '[p]ick [m]arks',
+      },
+      {
+        '<leader>pn',
+        function()
+          Snacks.picker.notifications()
+        end,
+        desc = '[p]ick [n]otifications',
+      },
+      {
+        '<leader>pGb',
+        function()
+          Snacks.picker.git_branches()
+        end,
+        desc = '[p]ick [G]it [b]ranches',
+      },
+      {
+        '<leader>pGc',
+        function()
+          Snacks.picker.git_log()
+        end,
+        desc = '[p]ick [G]it [c]ommits',
+      },
+      {
+        '<leader>pGs',
+        function()
+          Snacks.picker.git_status()
+        end,
+        desc = '[p]ick [G]it [s]tatus',
+      },
 
       -- Lazygit
       {

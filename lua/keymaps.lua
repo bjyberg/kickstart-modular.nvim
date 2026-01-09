@@ -123,7 +123,7 @@ vim.keymap.set('n', '<leader>sa', 'zg', { desc = '[s]pell: [a]dd word to diction
 vim.keymap.set('n', '<leader>sw', 'zw', { desc = '[s]pell: Mark word as [w]rong' })
 
 -- Show spelling suggestions
-vim.keymap.set('n', '<leader>ss', 'z=', { desc = '[s]pelling [s]uggestions' })
+vim.keymap.set('n', '<leader>ss', 'z=', { desc = 'Show [s]pell [s]uggestions' })
 
 -- [[ Custom - VIM ]]
 vim.keymap.set('n', '<leader>vc', '<cmd>edit $MYVIMRC<CR>', { desc = 'neo[v]im [c]onfig' })
@@ -136,6 +136,13 @@ vim.keymap.set('n', '<leader>vp', '<cmd>Lazy profile<CR>', { desc = 'neo[v]im: [
 -- [[ Custom - code ]]
 vim.keymap.set('n', '<leader>cc', 'gcc', { remap = true, desc = '[c]ode [c]omment line' })
 vim.keymap.set('v', '<leader>cc', 'gc', { remap = true, desc = '[c]ode [c]omment block' })
+vim.keymap.set('n', '<leader>cm', function()
+  vim.cmd 'delmarks!'
+end, { desc = '[c]lear [m]arks (local)' })
+vim.keymap.set('n', '<leader>cM', function()
+  vim.cmd 'delmarks!'
+  vim.cmd 'delmarks A-Z0-9'
+end, { desc = '[c]lear [M]arks (all)' })
 vim.keymap.set('n', '<leader>cs', function()
   local cs = vim.bo.commentstring:gsub('%%s', '')
   local text = cs .. '---   ---'
